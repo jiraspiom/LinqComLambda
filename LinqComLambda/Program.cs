@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using LinqComLambda.Entidade;
+using System.Linq;
 
 namespace LinqComLambda
 {
@@ -30,5 +31,17 @@ namespace LinqComLambda
 
 
         }
+
+        static void Visualizar<T> (string mensagem, IEnumerable<T> colecao){
+
+            Console.WriteLine(mensagem);
+
+            foreach(T objeto in colecao){
+                Console.WriteLine(objeto);
+            }
+
+        }
+
+
     }
 }
