@@ -29,6 +29,8 @@ namespace LinqComLambda
 
             };
 
+            var resultado1 = produtos.Where(p => p.Categoria.Classificacao == 1 && p.Valor < 900);
+            Visualizar("Classificao 1 valor < 900", resultado1);
 
         }
 
