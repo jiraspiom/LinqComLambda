@@ -32,6 +32,16 @@ namespace LinqComLambda
             var resultado1 = produtos.Where(p => p.Categoria.Classificacao == 1 && p.Valor < 900);
             Visualizar("Classificao 1 valor < 900", resultado1);
 
+            var resultado2 = produtos.Where(p => p.Categoria.Nome == "Ferramentas").Select(p => p.Nome);
+            Visualizar("Por nomes todas as ferramentas", resultado2);
+
+            var resultado3 = produtos.Where(p => p.Nome[0] == 'C').Select(p => new { p.Nome,  p.Valor, nomeCategoria = p.Categoria.Nome});
+            Visualizar("produto comeca com c", resultado3);
+
+            var resultado4 = produtos.Where(p => p.Categoria.Classificacao == 1).OrderBy(p => p.Valor).ThenBy(p => p.Nome);
+            Visualizar("catetorica 1 ordenado por valor e nome", resultado4);
+
+
         }
 
         static void Visualizar<T> (string mensagem, IEnumerable<T> colecao){
@@ -41,6 +51,8 @@ namespace LinqComLambda
             foreach(T objeto in colecao){
                 Console.WriteLine(objeto);
             }
+
+            Console.WriteLine("");
 
         }
 
