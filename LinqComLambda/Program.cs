@@ -25,7 +25,8 @@ namespace LinqComLambda
                 new Produto() { Id = 8, Nome = "Impressora", Valor = 350.0, Categoria = c3 },
                 new Produto() { Id = 9, Nome = "MacBook", Valor = 1800.0, Categoria = c2 },
                 new Produto() { Id = 10, Nome = "ApSom", Valor = 700.0, Categoria = c3 },
-                new Produto() { Id = 11, Nome = "Nivel", Valor = 70.0, Categoria = c1 }
+                new Produto() { Id = 11, Nome = "Nivel", Valor = 70.0, Categoria = c1 },
+                new Produto() { Id = 12, Nome = "Nivel", Valor = 70.0, Categoria = c1 }
 
             };
 
@@ -41,6 +42,21 @@ namespace LinqComLambda
             var resultado4 = produtos.Where(p => p.Categoria.Classificacao == 1).OrderBy(p => p.Valor).ThenBy(p => p.Nome);
             Visualizar("catetorica 1 ordenado por valor e nome", resultado4);
 
+            var resultado5 = resultado4.Skip(2).Take(4);
+            Visualizar("pula os 2 primeiro e pega os 4 proximo", resultado5);
+
+
+            var resultado6 = produtos.First(); //first gera exessao caso resultqado seje vazio
+            Console.WriteLine("Visualizar o primeiro " + resultado6);
+
+            var resultado7 = produtos.Where(p => p.Valor > 3000).FirstOrDefault();
+            Console.WriteLine("visualizar primeiro em consulta nula " + resultado7);
+
+            var resultado8 = produtos.Where(p => p.Id == 3).Single(); //single so quando tem certesa que retorna 1 elemento
+            Console.WriteLine("primeiro elemento " + resultado8);
+
+            var resultado9 = produtos.Where(p => p.Id > 33).SingleOrDefault(); //single so quando tem certesa que retorna 1 elemento
+            Console.WriteLine("primeiro elemento defalt em consulta nula " + resultado9);
 
         }
 
